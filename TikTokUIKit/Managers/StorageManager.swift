@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import FirebaseStorage
+
+final class StorageManager {
+    public static let shared = StorageManager()
+    
+    private let storage = Storage.storage()
+    
+    private init() {}
+    
+    public func getVideoURL(with identifier: String, completion: (URL) -> Void) {
+        
+    }
+}

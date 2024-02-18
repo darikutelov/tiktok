@@ -22,7 +22,6 @@
 		9C70E5142B810B5E00EAEC44 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E5132B810B5E00EAEC44 /* SettingsViewController.swift */; };
 		9C70E5162B810B9600EAEC44 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E5152B810B9600EAEC44 /* TabBarViewController.swift */; };
 		9C70E51B2B810C1C00EAEC44 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E51A2B810C1C00EAEC44 /* PostViewController.swift */; };
-		9C70E51D2B810C5800EAEC44 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E51C2B810C5800EAEC44 /* APICaller.swift */; };
 		9C70E51F2B810C7300EAEC44 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E51E2B810C7300EAEC44 /* StorageManager.swift */; };
 		9C70E5212B810C8F00EAEC44 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E5202B810C8F00EAEC44 /* DatabaseManager.swift */; };
 		9C70E5232B810C9B00EAEC44 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E5222B810C9B00EAEC44 /* AuthenticationManager.swift */; };
@@ -59,6 +58,7 @@
 		9C70E56E2B8123F800EAEC44 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9C70E56D2B8123F800EAEC44 /* SDWebImage */; };
 		9C70E5702B8123F800EAEC44 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9C70E56F2B8123F800EAEC44 /* SDWebImageMapKit */; };
 		9C70E5732B81256C00EAEC44 /* SwiftRater in Frameworks */ = {isa = PBXBuildFile; productRef = 9C70E5722B81256C00EAEC44 /* SwiftRater */; };
+		9C70E5762B81FCD100EAEC44 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E5752B81FCD100EAEC44 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,12 +79,12 @@
 		9C70E5132B810B5E00EAEC44 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9C70E5152B810B9600EAEC44 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		9C70E51A2B810C1C00EAEC44 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		9C70E51C2B810C5800EAEC44 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		9C70E51E2B810C7300EAEC44 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		9C70E5202B810C8F00EAEC44 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		9C70E5222B810C9B00EAEC44 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		9C70E5242B810CC800EAEC44 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		9C70E5332B8113FC00EAEC44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9C70E5752B81FCD100EAEC44 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +166,7 @@
 				9C70E4E92B81035D00EAEC44 /* SceneDelegate.swift */,
 				9C70E4E72B81035D00EAEC44 /* AppDelegate.swift */,
 				9C70E4F02B81035F00EAEC44 /* Assets.xcassets */,
+				9C70E5752B81FCD100EAEC44 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -205,7 +206,6 @@
 		9C70E5002B81098D00EAEC44 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				9C70E51C2B810C5800EAEC44 /* APICaller.swift */,
 				9C70E5222B810C9B00EAEC44 /* AuthenticationManager.swift */,
 				9C70E5202B810C8F00EAEC44 /* DatabaseManager.swift */,
 				9C70E5242B810CC800EAEC44 /* HapticsManager.swift */,
@@ -390,11 +390,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C70E5252B810CC800EAEC44 /* HapticsManager.swift in Sources */,
+				9C70E5762B81FCD100EAEC44 /* Extensions.swift in Sources */,
 				9C70E5212B810C8F00EAEC44 /* DatabaseManager.swift in Sources */,
 				9C70E5042B810A9D00EAEC44 /* ExploreViewController.swift in Sources */,
 				9C70E50E2B810B1000EAEC44 /* UserListViewController.swift in Sources */,
 				9C70E5142B810B5E00EAEC44 /* SettingsViewController.swift in Sources */,
-				9C70E51D2B810C5800EAEC44 /* APICaller.swift in Sources */,
 				9C70E51B2B810C1C00EAEC44 /* PostViewController.swift in Sources */,
 				9C70E5062B810ABE00EAEC44 /* CameraViewController.swift in Sources */,
 				9C70E5162B810B9600EAEC44 /* TabBarViewController.swift in Sources */,

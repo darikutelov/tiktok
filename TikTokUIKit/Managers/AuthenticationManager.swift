@@ -6,3 +6,23 @@
 //
 
 import Foundation
+import FirebaseAuth
+
+final class AuthenticationManager {
+    public static let shared = AuthenticationManager()
+    
+    private init() {}
+    
+    enum SignInMethod {
+        case email
+        case google
+    }
+    
+    public func singIn(with method: SignInMethod) {
+        
+    }
+    
+    public func signOut() {
+        
+    }
+}
