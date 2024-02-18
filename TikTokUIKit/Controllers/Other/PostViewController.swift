@@ -5,10 +5,12 @@
 //  Created by Dariy Kutelov on 17.02.24.
 //
 
+import AVFoundation
 import UIKit
 
 protocol PostViewControllerDelegate: AnyObject {
     func postViewController(_ vc: PostViewController, didTapCommentButtonFor post: PostModel)
+    func postViewController(_ vc: PostViewController, didTapProfileButtonFor post: PostModel)
 }
 
 class PostViewController: UIViewController {
@@ -16,7 +18,7 @@ class PostViewController: UIViewController {
     // MARK: - Props
     
     weak var delegate: PostViewControllerDelegate?
-    
+    var player: AVPlayer?
     var model: PostModel
     
     // MARK: - UI Elements
@@ -42,6 +44,14 @@ class PostViewController: UIViewController {
         button.setBackgroundImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.tintColor = .white
+        return button
+    }()
+    
+    private let profileButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "Test"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.layer.masksToBounds = true
         return button
     }()
     
@@ -77,6 +87,7 @@ class PostViewController: UIViewController {
         setUpButtons()
         setUpDoubleTapToLike()
         view.addSubview(captionLabel)
+        configureVideo()
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,6 +106,14 @@ class PostViewController: UIViewController {
                 height: size
             )
         }
+        
+        profileButton.frame = CGRect(
+            x: likeButton.left,
+            y: likeButton.top - 10 - size,
+            width: size,
+            height: size
+        )
+        profileButton.layer.cornerRadius = size / 2
         
         // Position caption
         captionLabel.sizeToFit()
@@ -116,10 +135,11 @@ class PostViewController: UIViewController {
         view.addSubview(likeButton)
         view.addSubview(commentButton)
         view.addSubview(shareButton)
-        
+        view.addSubview(profileButton)
         likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         commentButton.addTarget(self, action: #selector(didTapComment), for: .touchUpInside)
         shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
+        profileButton.addTarget(self, action: #selector(didTapProfileButton), for: .touchUpInside)
     }
     
     private func setUpDoubleTapToLike() {
@@ -127,6 +147,23 @@ class PostViewController: UIViewController {
         tap.numberOfTapsRequired = 2
         view.addGestureRecognizer(tap)
         view.isUserInteractionEnabled = true
+    }
+    
+    private func configureVideo() {
+        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else {
+            return
+        }
+        
+        let url = URL(fileURLWithPath: path)
+
+        player = AVPlayer(url: url)
+        
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = view.bounds
+        playerLayer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(playerLayer)
+        player?.volume = 0
+        player?.play()
     }
     
     // MARK: - Button action methods
@@ -182,5 +219,9 @@ class PostViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc private func didTapProfileButton() {
+        delegate?.postViewController(self, didTapProfileButtonFor: model)
     }
 }

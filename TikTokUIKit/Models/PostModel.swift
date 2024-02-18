@@ -10,9 +10,8 @@ import Foundation
 
 struct PostModel {
     let indentifier: String
-    
+    let user = User(identifier: UUID().uuidString, username: "kaneywest", profilePictureUrl: nil)
     var isLikedByCurrentUser = false
-    
     
     static func mockModels() -> [PostModel] {
         Array(0...100).compactMap { _ in

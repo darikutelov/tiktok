@@ -11,6 +11,7 @@
 		9C0DAE822B823A4900C46305 /* PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DAE812B823A4900C46305 /* PostComment.swift */; };
 		9C0DAE842B823A7000C46305 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DAE832B823A7000C46305 /* User.swift */; };
 		9C0DAE862B823CE200C46305 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DAE852B823CE200C46305 /* CommentTableViewCell.swift */; };
+		9C0DAE882B8271C400C46305 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 9C0DAE872B8269EB00C46305 /* video.mp4 */; };
 		9C70E4E82B81035D00EAEC44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E4E72B81035D00EAEC44 /* AppDelegate.swift */; };
 		9C70E4EA2B81035D00EAEC44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E4E92B81035D00EAEC44 /* SceneDelegate.swift */; };
 		9C70E4EC2B81035D00EAEC44 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E4EB2B81035D00EAEC44 /* HomeViewController.swift */; };
@@ -71,6 +72,7 @@
 		9C0DAE812B823A4900C46305 /* PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComment.swift; sourceTree = "<group>"; };
 		9C0DAE832B823A7000C46305 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9C0DAE852B823CE200C46305 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		9C0DAE872B8269EB00C46305 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		9C70E4E42B81035D00EAEC44 /* TikTokUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTokUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C70E4E72B81035D00EAEC44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C70E4E92B81035D00EAEC44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		9C70E4FB2B8108B700EAEC44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9C0DAE872B8269EB00C46305 /* video.mp4 */,
 				9C70E4E92B81035D00EAEC44 /* SceneDelegate.swift */,
 				9C70E4E72B81035D00EAEC44 /* AppDelegate.swift */,
 				9C70E4F02B81035F00EAEC44 /* Assets.xcassets */,
@@ -369,6 +372,7 @@
 				9C70E4F42B81035F00EAEC44 /* LaunchScreen.storyboard in Resources */,
 				9C70E4F12B81035F00EAEC44 /* Assets.xcassets in Resources */,
 				9C70E5342B8113FC00EAEC44 /* GoogleService-Info.plist in Resources */,
+				9C0DAE882B8271C400C46305 /* video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
