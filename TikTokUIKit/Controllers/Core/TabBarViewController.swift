@@ -15,7 +15,6 @@ class TabBarViewController: UITabBarController {
         setUpControllers()
     }
     
-    
     private func setUpControllers() {
         let home = HomeViewController()
         let explore = ExploreViewController()
@@ -32,6 +31,11 @@ class TabBarViewController: UITabBarController {
         let nav2 = UINavigationController(rootViewController: explore)
         let nav3 = UINavigationController(rootViewController: notifications)
         let nav4 = UINavigationController(rootViewController: profile)
+        
+        // Clear background on top navigation bar on home page
+        nav1.navigationBar.backgroundColor = .clear
+        nav1.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav1.navigationBar.shadowImage = UIImage()
         
         nav1.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
         nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "magnifyingglass"), tag: 2)

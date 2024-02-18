@@ -59,6 +59,7 @@
 		9C70E5702B8123F800EAEC44 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9C70E56F2B8123F800EAEC44 /* SDWebImageMapKit */; };
 		9C70E5732B81256C00EAEC44 /* SwiftRater in Frameworks */ = {isa = PBXBuildFile; productRef = 9C70E5722B81256C00EAEC44 /* SwiftRater */; };
 		9C70E5762B81FCD100EAEC44 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E5752B81FCD100EAEC44 /* Extensions.swift */; };
+		9C70E5782B82080700EAEC44 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C70E5772B82080700EAEC44 /* PostModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		9C70E5242B810CC800EAEC44 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		9C70E5332B8113FC00EAEC44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C70E5752B81FCD100EAEC44 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9C70E5772B82080700EAEC44 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		9C70E4FD2B81091600EAEC44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9C70E5772B82080700EAEC44 /* PostModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				9C70E5232B810C9B00EAEC44 /* AuthenticationManager.swift in Sources */,
 				9C70E50A2B810AEA00EAEC44 /* NotificationsViewController.swift in Sources */,
 				9C70E5102B810B2B00EAEC44 /* SignInViewController.swift in Sources */,
+				9C70E5782B82080700EAEC44 /* PostModel.swift in Sources */,
 				9C70E50C2B810AF400EAEC44 /* ProfileViewController.swift in Sources */,
 				9C70E51F2B810C7300EAEC44 /* StorageManager.swift in Sources */,
 				9C70E4E82B81035D00EAEC44 /* AppDelegate.swift in Sources */,

@@ -8,11 +8,12 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
+    // MARK: - Views and VCs
+    
     private let horizontalScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.bounces = false
-        scrollView.backgroundColor = .red
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         return scrollView
@@ -30,6 +31,28 @@ class HomeViewController: UIViewController {
         options: [:]
     )
     
+    // MARK: Props and computed props
+    
+    private var forYouPosts: [PostModel] = PostModel.mockModels()
+    private var followingPosts: [PostModel] = PostModel.mockModels()
+    
+    var currentPosts: [PostModel] {
+        if horizontalScrollView.contentOffset.x == 0 {
+            return followingPosts
+        }
+        
+        return forYouPosts
+    }
+    
+    // Segmented control
+    let control: UISegmentedControl = {
+        let titles = ["Following", "For You"]
+        let control = UISegmentedControl(items: titles)
+        control.selectedSegmentIndex = 1
+        control.backgroundColor = nil
+        control.selectedSegmentTintColor = .white
+        return control
+    }()
     
     // MARK: - Lifecycle
     
@@ -39,6 +62,9 @@ class HomeViewController: UIViewController {
         
         view.addSubview(horizontalScrollView)
         setUpFeed()
+        horizontalScrollView.delegate = self
+        horizontalScrollView.contentOffset = CGPoint(x: view.width, y: 0)
+        setUpHeaderButtons()
     }
     
     // Called when subviews are laid out
@@ -58,12 +84,12 @@ class HomeViewController: UIViewController {
     }
     
     private func setUpFollowingFeed() {
-        // Set Paging Controllers
-        let vc = UIViewController()
-        vc.view.backgroundColor = .blue
+        guard let model = followingPosts.first else {
+            return
+        }
         
         followingPageViewController.setViewControllers(
-            [vc],
+            [PostViewController(model: model)],
             direction: .forward,
             animated: false,
             completion: nil
@@ -81,11 +107,12 @@ class HomeViewController: UIViewController {
     }
     
     private func setUpForYouFeed() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .blue
+        guard let model = forYouPosts.first else {
+            return
+        }
         
         forYouPageViewController.setViewControllers(
-            [vc],
+            [PostViewController(model: model)],
             direction: .forward,
             animated: false,
             completion: nil
@@ -101,19 +128,73 @@ class HomeViewController: UIViewController {
         addChild(forYouPageViewController)
         forYouPageViewController.didMove(toParent: self)
     }
+    
+    private func setUpHeaderButtons() {
+        control.addTarget(self, action: #selector(didChageSegmentControl(_:)), for: .valueChanged)
+        navigationItem.titleView = control
+    }
+    
+    @objc private func didChageSegmentControl(_ sender: UISegmentedControl) {
+        horizontalScrollView.setContentOffset(CGPoint(x: view.width * CGFloat(sender.selectedSegmentIndex),
+                                                      y: 0),
+                                              animated: true)
+    }
 }
+
+// MARK: - PageViewController data source
 
 extension HomeViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return nil
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let vc = UIViewController()
-        vc.view.backgroundColor = [UIColor.red, UIColor.gray, UIColor.green].randomElement()
+        
+        guard let fromPost = (viewController as? PostViewController)?.model else { return nil }
+        
+        guard let index = currentPosts.firstIndex(where: {
+            $0.indentifier == fromPost.indentifier
+        }) else {
+            return nil
+        }
+        
+        if index == 0 {
+            return nil
+        }
+        
+        let priorIndex = index - 1
+        let model = currentPosts[priorIndex]
+        
+        let vc = PostViewController(model: model)
         return vc
     }
     
-    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let fromPost = (viewController as? PostViewController)?.model else { return nil }
+        
+        guard let index = currentPosts.firstIndex(where: {
+            $0.indentifier == fromPost.indentifier
+        }) else {
+            return nil
+        }
+        
+        if index == currentPosts.count - 1 {
+            return nil
+        }
+        
+        let nextIndex = index + 1
+        let model = currentPosts[nextIndex]
+        
+        let vc = PostViewController(model: model)
+        return vc
+    }
+}
+
+// MARK: - ScrollView delegate
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x == 0 || scrollView.contentOffset.x <= (view.width / 2) {
+            control.selectedSegmentIndex = 0
+        } else if scrollView.contentOffset.x > (view.width / 2) {
+            control.selectedSegmentIndex = 1
+        }
+    }
 }
 
